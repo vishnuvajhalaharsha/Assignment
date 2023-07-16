@@ -32,6 +32,12 @@ module.exports = {
     /** "port"
      * port of dev server
      */
+    proxy: {
+        '/app-data/study-abroad/courses.json': {
+          target: 'https://www.liverpool.ac.uk', // The target URL of the API server
+          changeOrigin: true,
+        },
+      },
     port: "3000",
     /** "static"
      * This property tells Webpack what static file it should serve
