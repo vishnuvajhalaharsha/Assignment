@@ -19,7 +19,7 @@ const TableComponent = ({ data }) => {
         {data.map((item,index) => (
           <tr key={item.id}>
             <td>{item.Id}</td>
-            <td><Link to={{ pathname: `/universities/${item.Id}` }}>{item.course}</Link></td>
+            <td>{item.course ? <Link to={{ pathname: `/universities/${item.Id}` }}>{item.course}</Link> : "N/A"}</td>
            
           </tr>
         ))}

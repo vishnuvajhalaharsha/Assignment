@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Table } from 'react-bootstrap';
+import CommonTableComponent from '../common/Table';
 
 const UniList = ({data}) => {
     const id = useParams('Id');
@@ -15,31 +15,11 @@ const UniList = ({data}) => {
      
   },[])
 
- 
- 
-
   return (
     <div>
       <h2 className='m-4'>Univeristy Details</h2>
       <div className='m-4'>
-      <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Country</th>
-          
-        </tr>
-      </thead>
-      <tbody>
-        {uniList.map((item,index) => (
-          <tr key={index}>
-            <td>{item.name}</td>
-            <td>{item.country}</td>
-           
-          </tr>
-        ))}
-      </tbody>
-    </Table>
+      <CommonTableComponent headers={["name", "country"]} data={uniList}/>
       </div>
       
     </div>

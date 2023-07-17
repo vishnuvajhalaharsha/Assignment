@@ -1,46 +1,3 @@
-// import React, { useEffect } from "react";
-// import { useState } from "react";
-// import "bootstrap/dist/css/bootstrap.css";
-// import {  Route, Link, Outlet, Routes } from 'react-router-dom';
-// import axios from "axios";
-// import DisplayUniveristy from "./Task4";
-
-// const App = () => {
-//   const [value, setValue] = useState([]);
-//   const [courses, setCourses] = useState([]);
-
-//   useEffect(() => {
-//     let something = ["Hello", "mic check"];
-//     setValue(something);
-//   }, []);
-
-//   useEffect(() => {
-//     fetchCourses();
-//   }, []);
-//   const fetchCourses = async () => {
-//     try {
-//       const response = await axios.get("/app-data/study-abroad/courses.json");
-//       setCourses(response.data);
-//     } catch (error) {
-//       console.error("Error fetching courses:", error);
-//     }
-//   };
-
-//   return (
-//     <Routes>
-        
-//         <Route element={<DisplayUniveristy data={courses} />} />
-
-        
-
-//     </Routes>
-     
-    
-    
-//   );
-// };
-
-// export default App;
 
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -86,7 +43,7 @@ const App = () => {
     <nav>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">All Tasks</Link>
         </li>
         <li>
           <Link to="/about">About</Link>
