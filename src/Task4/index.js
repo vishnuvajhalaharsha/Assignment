@@ -3,6 +3,7 @@ import Table from "./Table";
 import Pagination from "./Pagination";
 import StudentComponent from "../Task2";
 import RegistrationForm from "../Task3";
+import SQL from "../Task1";
 
 const TableComponent = ({ data }) => {
   const itemsPerPage = 20;
@@ -20,11 +21,12 @@ const TableComponent = ({ data }) => {
 
   return (
     <>
+    {/* <SQL/>
       <StudentComponent />
       <h2 className="m-4">Task 3</h2>
       <div className="m-4">
         <RegistrationForm />
-      </div>
+      </div> */}
 
       <h2 className="m-4">Task 4</h2>
       <div className="m-4">

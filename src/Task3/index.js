@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Row, Form, Button, Alert } from "react-bootstrap";
+import { Container, Row, Form, Button, Alert ,Col} from "react-bootstrap";
 import CommonInput from "../common/Input/index";
 
 const RegistrationForm = () => {
@@ -12,12 +12,13 @@ const RegistrationForm = () => {
   const [subject2, setSubject2] = useState("");
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [formErrors, setFormErrors] = useState({});
+  const [showNotification, setShowNotification] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsFormSubmitted(true);
 
-    // Check if all required fields are filled
+    // set error
     const errors = {};
     if (!firstName) {
       errors.firstName = "First Name is required.";
@@ -56,13 +57,29 @@ const RegistrationForm = () => {
         subject1,
         subject2,
       });
+      setShowNotification(true);
+
+      
+      setTimeout(() => {
+        setShowNotification(false);
+      }, 2000);
+
       setFormErrors({});
+      setFirstName("")
+      setDateOfBirth(null)
+      setEmail("")
+      setSubject1("")
+      setSubject2("")
+      setSurname("")
+      setTitle("")
     }
   };
 
   return (
     <Container className="m-4">
+        <h2 > Task 3</h2>
       <Row>
+        <Col>
         <Form onSubmit={handleSubmit}>
           <CommonInput
             label="First Name"
@@ -70,7 +87,7 @@ const RegistrationForm = () => {
             type="text"
             maxLength={25}
             onChange={setFirstName}
-            width={"30%"}
+            width={"100%"}
             required
           />
           <CommonInput
@@ -78,7 +95,7 @@ const RegistrationForm = () => {
             value={surname}
             type="text"
             maxLength={25}
-            width={"30%"}
+            width={"100%"}
             onChange={setSurname}
             required
           />
@@ -86,7 +103,7 @@ const RegistrationForm = () => {
             label="Title"
             value={title}
             type="text"
-            width={"30%"}
+            width={"100%"}
             onChange={setTitle}
             required
           />
@@ -95,14 +112,14 @@ const RegistrationForm = () => {
             value={email}
             type="email"
             maxLength={50}
-            width={"30%"}
+            width={"100%"}
             onChange={setEmail}
             required
           />
           <CommonInput
             label="Date of Birth"
             value={dateOfBirth}
-            width={"30%"}
+            width={"100%"}
             isDate
             
             onChange={setDateOfBirth}
@@ -112,7 +129,7 @@ const RegistrationForm = () => {
             label="Subject 1"
             value={subject1}
             type="text"
-            width={"30%"}
+            width={"100%"}
             onChange={setSubject1}
             required
           />
@@ -120,7 +137,7 @@ const RegistrationForm = () => {
             label="Subject 2"
             value={subject2}
             type="text"
-            width={"30%"}
+            width={"100%"}
             onChange={setSubject2}
             required
           />
@@ -128,8 +145,12 @@ const RegistrationForm = () => {
           <Button className="mt-4" type="submit">
             Submit
           </Button>
-          {isFormSubmitted && Object.keys(formErrors).length > 0 && (
-            <Alert className="mt-4" style={{width:"30%"}} variant="danger">
+         
+        </Form>
+        </Col>
+        <Col>
+        {isFormSubmitted && !showNotification && Object.keys(formErrors).length > 0 && (
+            <Alert className="mt-4" style={{width:"100%"}} variant="danger">
               Please fill in the required fields:
               <ul>
                 {Object.values(formErrors).map((error, index) => (
@@ -138,7 +159,10 @@ const RegistrationForm = () => {
               </ul>
             </Alert>
           )}
-        </Form>
+          {
+            isFormSubmitted && showNotification && (<Alert variant="success"> Saved Successfully</Alert>)
+          }
+        </Col>
       </Row>
     </Container>
   );

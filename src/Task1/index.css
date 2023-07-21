@@ -1,0 +1,14 @@
+/* In your CSS file or within the component */
+pre {
+    background-color: #f7f7f7;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  code.sql {
+    color: #007bff;
+    font-size: 14px;
+    font-family: monospace;
+  }
+  

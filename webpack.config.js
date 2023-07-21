@@ -17,7 +17,7 @@ module.exports = {
     /** "path"
      * the folder path of the output file
      */
-    path: path.resolve(__dirname, "public"),
+    path: path.resolve(__dirname, "build"),
     /** "filename"
      * the name of the output file
      */
@@ -83,6 +83,14 @@ module.exports = {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+    },
     ],
   },
 };
